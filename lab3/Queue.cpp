@@ -32,7 +32,6 @@ Queue& Queue::push(const int num)
     std::move(m_data, m_data + m_size, tmp);
     tmp[m_size] = num;
     delete[] m_data;
-    m_data = new int[m_size + 1];
     m_data = tmp;
     m_size++;
     return *this;
@@ -45,7 +44,6 @@ Queue& Queue::pop()
         int* tmp = new int[m_size - 1];
         std::move(m_data + 1, m_data + m_size, tmp);
         delete[] m_data;
-        m_data = new int[m_size - 1];
         m_data = tmp;
         m_size--;
     }
